@@ -5,7 +5,6 @@ const Home = () => {
     return (
         <>
             <div>lending page</div>
-            <Link href="/main"><a>main page</a></Link>
         </>
     )
 };
