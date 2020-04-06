@@ -5,6 +5,8 @@ import {applyMiddleware, compose, createStore} from "redux";
 import AppLayout from "../components/layout";
 import PropTypes from "prop-types";
 
+import createSagaMiddleware from 'redux-saga';
+import rootSaga from "../sagas";
 
 import { DatePicker } from 'antd';
 import 'antd/dist/antd.css';
@@ -37,11 +39,15 @@ NodeBird.propTypes = {
 export default withRedux( (initialState, options) => {
 
     //middlewares and combind
-    const middleware = [];
+    const sagaMiddleware = createSagaMiddleware();
+    const middleware = [sagaMiddleware];
     const enhancer = compose(
         applyMiddleware(...middleware),
     );
 
     const store = createStore(reducer,initialState,enhancer);
+
+    sagaMiddleware.run(rootSaga);
+
     return store;
 })(NodeBird);
