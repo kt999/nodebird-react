@@ -1,6 +1,6 @@
 import { LOG_IN } from '../reducers/user';
 import {error} from "next/dist/build/output/log";
-import { all, call,delay, fork, put, takeEvery } from 'redux-saga/effects';
+import { all, call,delay, fork, put, takeEvery,take } from 'redux-saga/effects';
 
 
 function loginAPI() {
@@ -28,7 +28,7 @@ function* login() {
 }
 
 function* watchLogin() {
-    yield takeEvery(LOG_IN, login);
+    yield take(LOG_IN, login);
 }
 
 
