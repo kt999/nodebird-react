@@ -40,9 +40,9 @@ export default withRedux( (initialState, options) => {
 
     //middlewares and combind
     const sagaMiddleware = createSagaMiddleware();
-    const middleware = [sagaMiddleware];
+    const middlewares = [sagaMiddleware];
     const enhancer = compose(
-        applyMiddleware(...middleware),
+        applyMiddleware(...middlewares),
     );
 
     const store = createStore(reducer,initialState,enhancer);

@@ -17,12 +17,12 @@ const AppLayout = ({children}) => {
 
     const {isLoggedIn,userInfo} = useSelector(state => state.user);
 
-    const onClickLogIn = useCallback((e) => {
-        dispatch(loginAction({
-            nickname:"kt999"
-        })
-        );
-    },[]);
+    // const onClickLogIn = useCallback((e) => {
+    //     dispatch(loginAction({
+    //         nickname:"kt999"
+    //     })
+    //     );
+    // },[]);
 
     const onClickLogOut = useCallback((e) => {
         dispatch(logoutAction);
@@ -37,7 +37,11 @@ const AppLayout = ({children}) => {
                 {isLoggedIn ?
                     <Button onClick={onClickLogOut} type="primary" shape="round" size="small" style={{float:"right",marginTop:"10px",marginRight:"10px"}}>{userInfo.nickname}</Button>
                     :
-                    <Button onClick={onClickLogIn} type="primary" shape="round" size="small" style={{float:"right",marginTop:"10px",marginRight:"10px"}}>Login</Button>
+                    <Link href="/login">
+                        <a>
+                            <Button type="primary" shape="round" size="small" style={{float:"right",marginTop:"10px",marginRight:"10px"}}>Login</Button>
+                        </a>
+                    </Link>
                 }
             </Menu>
             {children}
