@@ -16,7 +16,6 @@ import reducer from '../reducers';
 
 const NodeBird = ({Component,store}) => {
 
-
     return (
         <>
             <Provider store = {store}>

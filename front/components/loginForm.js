@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from "react";
 import {useDispatch} from "react-redux";
-import {LOG_IN} from "../reducers/user";
+import {LOG_IN_REQUEST} from "../reducers/user";
 
 const LoginForm = () => {
 
@@ -17,23 +17,19 @@ const LoginForm = () => {
         setPassword(e.target.value);
     },[]);
 
-    console.log(email,password);
-
-    const onSubmitForm = (e) => {
+    const onSubmitForm = useCallback((e) => {
         e.preventDefault(); // 기본적인 서브밋 행동을 취소합니다
 
-        console.log(email,password);
-
         dispatch({
-            type: LOG_IN,
+            type: LOG_IN_REQUEST,
             data: {
                 email : email,
                 password : password,
-                nickname: "kt999"
+                nickname : "kt999"
             }
         });
 
-    };
+    },[email,password]);
 
     return (
         <>
