@@ -1,7 +1,11 @@
 import { LOG_IN_REQUEST,LOG_IN } from '../reducers/user';
 import {error} from "next/dist/build/output/log";
+<<<<<<< HEAD
 import { all, call,delay, fork, put, takeEvery } from 'redux-saga/effects';
 import Router from 'next/router';
+=======
+import { all, call,delay, fork, put, takeEvery,take } from 'redux-saga/effects';
+>>>>>>> a3f9667cc8cc7837ba00830c32e2b869d0b3cf24
 
 
 function loginAPI(loginData) {
@@ -28,8 +32,13 @@ function* login(action) {
 }
 
 function* watchLogin() {
+<<<<<<< HEAD
     yield takeEvery(LOG_IN_REQUEST, login);
 };
+=======
+    yield take(LOG_IN, login);
+}
+>>>>>>> a3f9667cc8cc7837ba00830c32e2b869d0b3cf24
 
 
 export default function* userSaga () {
